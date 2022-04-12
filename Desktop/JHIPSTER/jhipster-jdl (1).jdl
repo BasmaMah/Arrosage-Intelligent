@@ -1,0 +1,101 @@
+application {
+  config {
+    baseName arroapp,
+    applicationType monolith,
+    packageName com.arroapp,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    clientFramework angular
+  }
+  entities *
+}
+
+
+
+entity Alerte {
+	humidite Int required
+    temperature Int required
+    luminosite Int required
+}
+entity Ferme {
+	nmbParcelle Int required
+	photo String required
+}
+entity Parcelle {
+	surface Float required
+    photo String required
+    }
+    
+entity Plante {
+	libelle String 	required
+	photo String required
+    racine String required
+}
+
+
+entity TypePlante {
+	libelle String required
+	humiditeMax Float required
+    humiditeMin Float required
+    temperature Float required
+    luminosite Float required
+} 
+
+entity Grandeur {
+	type String required
+	valeur String required
+    date Date required
+    }
+    
+entity TypeSol {
+	libelle String required
+}
+entity Boitier {
+	ref String required
+}
+entity Affectation {
+	dateD Date required
+    dateF Date required
+}
+entity Capteur {
+	idCapteur Int required
+    typeCap String  required
+    image String required
+}
+entity Plantage {
+	date Date required
+    nombre Int required
+}
+entity Branche {
+idBranchure Int required
+}
+
+relationship OneToOne {
+	
+    User  to Ferme  
+    
+    
+}
+
+
+relationship OneToMany {
+	Parcelle to Affectation
+	User to Alerte
+    Boiter to Capteur 
+    TypeSol  to Parcelle
+    Affectation to Boitier
+    Boitier to Branche 
+    Capteur to Branche
+    Plantage to Parcelle
+    Plantage to Plante
+}
+
+
+relationship OneToMany {
+	Ferme  to Parcelle 
+    Alerte to Parcelle
+    TypePlante  to Plante 
+    Parcelle  to Grandeur 
+    Grandeur to Boitier
+    Boitier  to Alerte  
+}
