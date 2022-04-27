@@ -1,0 +1,123 @@
+
+application {
+  config {
+    baseName arroapp,
+    applicationType monolith,
+    packageName com.arroapp,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    clientFramework angular
+  }
+  entities *
+}
+
+entity ExtraUser {
+	phone String 
+    address String 
+    
+}
+
+entity Arrosage {
+	date ZoneDateTime required
+    litresEau Float required
+    
+}
+entity Ferme {
+	lebelle String required
+	photo ImageBlob required
+}
+entity Parcelle {
+	surface Float required
+    photo ImageBlob required
+    libelle String required
+    }
+    
+entity Plante {
+	libelle String 	required
+	photo ImageBlob required
+    racine String required
+}
+
+
+entity TypePlante {
+	libelle String required
+	humiditeMax Float required
+    humiditeMin Float required
+    temperature Float required
+    luminosite Float required
+} 
+
+
+entity Grandeur {
+	type String required
+	valeur Float required
+    unite String required
+    date ZoneDateTime required
+    }
+    
+entity TypeSol {
+	libelle String required
+    description String required 
+}
+entity Boitier {
+	ref Integer required
+    type String required
+    nbrBranchBoitier Integer required
+    nbrBranchArduino Integer required
+    code String  required
+}
+entity Installation {
+	dateDebut ZoneDateTime required
+    dateFin ZoneDateTime required
+}
+entity Capteur {
+    ref String required
+    type String  required
+    photo ImageBlob required
+}
+entity Plantage {
+	date ZoneDateTime required
+    nombre Integer required
+}
+entity Connecte {
+fonctionnel Boolean required
+branche String required
+frequence Float required
+marge Float required
+}
+entity Notification {
+date ZoneDateTime required
+content String required
+vu Boolean required
+}
+
+relationship OneToOne {
+	 
+    ExtraUser to User
+    
+    
+}
+
+
+relationship OneToMany {
+	Parcelle to Installation
+	User to Alerte
+    Boiter to Capteur 
+    TypeSol  to Parcelle
+    Boitier to Installation
+    Boitier to Connecte 
+    Capteur to Connecte
+    Parcelle to Plantage
+    Plante to Plantage
+    ExtraUser to Ferme
+     Ferme to Parcelle
+     Parcelle to Arrosage 
+     Parcelle to Notification 
+}
+
+
+relationship OneToMany {
+    TypePlante to Plante
+    Parcelle  to Grandeur 
+ 
+}
