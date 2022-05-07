@@ -1,0 +1,38 @@
+{
+  "applications": "*",
+  "changelogDate": "20220428041735",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "installation",
+  "fields": [
+    {
+      "fieldName": "dateDebut",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateFin",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Installation",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "parcelle",
+      "otherEntityRelationshipName": "installation",
+      "relationshipName": "parcelle",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "boitier",
+      "otherEntityRelationshipName": "installation",
+      "relationshipName": "boitier",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

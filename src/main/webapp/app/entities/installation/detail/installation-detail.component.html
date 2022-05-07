@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="installation">
+      <h2 data-cy="installationDetailsHeading"><span>Installation</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ installation.id }}</span>
+        </dd>
+        <dt><span>Date Debut</span></dt>
+        <dd>
+          <span>{{ installation.dateDebut | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Date Fin</span></dt>
+        <dd>
+          <span>{{ installation.dateFin | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Parcelle</span></dt>
+        <dd>
+          <div *ngIf="installation.parcelle">
+            <a [routerLink]="['/parcelle', installation.parcelle?.id, 'view']">{{ installation.parcelle?.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Boitier</span></dt>
+        <dd>
+          <div *ngIf="installation.boitier">
+            <a [routerLink]="['/boitier', installation.boitier?.id, 'view']">{{ installation.boitier?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/installation', installation.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

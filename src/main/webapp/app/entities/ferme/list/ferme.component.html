@@ -1,0 +1,81 @@
+<div>
+  <h2 id="page-heading" data-cy="FermeHeading">
+    <span>Fermes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-ferme"
+        [routerLink]="['/ferme/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Ferme </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="fermes?.length === 0">
+    <span>No fermes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="fermes && fermes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>Lebelle</span></th>
+          <th scope="col"><span>Photo</span></th>
+          <th scope="col"><span>Extra User</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ferme of fermes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/ferme', ferme.id, 'view']">{{ ferme.id }}</a>
+          </td>
+          <td>{{ ferme.lebelle }}</td>
+          <td>
+            <a *ngIf="ferme.photo" (click)="openFile(ferme.photo, ferme.photoContentType)">
+              <img [src]="'data:' + ferme.photoContentType + ';base64,' + ferme.photo" style="max-height: 30px" alt="ferme image" />
+            </a>
+            <span *ngIf="ferme.photo">{{ ferme.photoContentType }}, {{ byteSize(ferme.photo) }}</span>
+          </td>
+          <td>
+            <div *ngIf="ferme.extraUser">
+              <a [routerLink]="['/extra-user', ferme.extraUser?.id, 'view']">{{ ferme.extraUser?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/ferme', ferme.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/ferme', ferme.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(ferme)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
