@@ -1,0 +1,42 @@
+{
+  "applications": "*",
+  "changelogDate": "20220428041736",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "capteur",
+  "fields": [
+    {
+      "fieldName": "ref",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "photo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Capteur",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "connecte",
+      "otherEntityRelationshipName": "capteur",
+      "relationshipName": "connecte",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "boitier",
+      "otherEntityRelationshipName": "capteur",
+      "relationshipName": "boitier",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

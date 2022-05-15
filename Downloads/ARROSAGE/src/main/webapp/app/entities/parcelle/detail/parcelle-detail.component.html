@@ -1,0 +1,57 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="parcelle">
+      <h2 data-cy="parcelleDetailsHeading"><span>Parcelle</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ parcelle.id }}</span>
+        </dd>
+        <dt><span>Surface</span></dt>
+        <dd>
+          <span>{{ parcelle.surface }}</span>
+        </dd>
+        <dt><span>Photo</span></dt>
+        <dd>
+          <div *ngIf="parcelle.photo">
+            <a (click)="openFile(parcelle.photo, parcelle.photoContentType)">
+              <img [src]="'data:' + parcelle.photoContentType + ';base64,' + parcelle.photo" style="max-width: 100%" alt="parcelle image" />
+            </a>
+            {{ parcelle.photoContentType }}, {{ byteSize(parcelle.photo) }}
+          </div>
+        </dd>
+        <dt><span>Libelle</span></dt>
+        <dd>
+          <span>{{ parcelle.libelle }}</span>
+        </dd>
+        <dt><span>Type Sol</span></dt>
+        <dd>
+          <div *ngIf="parcelle.typeSol">
+            <a [routerLink]="['/type-sol', parcelle.typeSol?.id, 'view']">{{ parcelle.typeSol?.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Ferme</span></dt>
+        <dd>
+          <div *ngIf="parcelle.ferme">
+            <a [routerLink]="['/ferme', parcelle.ferme?.id, 'view']">{{ parcelle.ferme?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/parcelle', parcelle.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+{
+  "applications": "*",
+  "changelogDate": "20220428041731",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "type_plante",
+  "fields": [
+    {
+      "fieldName": "libelle",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "humiditeMax",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "humiditeMin",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "temperature",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "luminosite",
+      "fieldType": "Float"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TypePlante",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "plante",
+      "otherEntityRelationshipName": "typePlante",
+      "relationshipName": "plante",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

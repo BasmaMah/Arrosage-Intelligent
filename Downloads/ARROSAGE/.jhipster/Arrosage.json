@@ -1,0 +1,32 @@
+{
+  "applications": "*",
+  "changelogDate": "20220428041727",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "arrosage",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "litresEau",
+      "fieldType": "Float"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Arrosage",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "parcelle",
+      "otherEntityRelationshipName": "arrosage",
+      "relationshipName": "parcelle",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="arrosage">
+      <h2 data-cy="arrosageDetailsHeading"><span>Arrosage</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ arrosage.id }}</span>
+        </dd>
+        <dt><span>Date</span></dt>
+        <dd>
+          <span>{{ arrosage.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Litres Eau</span></dt>
+        <dd>
+          <span>{{ arrosage.litresEau }}</span>
+        </dd>
+        <dt><span>Parcelle</span></dt>
+        <dd>
+          <div *ngIf="arrosage.parcelle">
+            <a [routerLink]="['/parcelle', arrosage.parcelle?.id, 'view']">{{ arrosage.parcelle?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/arrosage', arrosage.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

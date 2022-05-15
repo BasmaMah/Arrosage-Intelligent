@@ -1,0 +1,56 @@
+{
+  "applications": "*",
+  "changelogDate": "20220428041734",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "boitier",
+  "fields": [
+    {
+      "fieldName": "ref",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nbrBranchBoitier",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbrBranchArduino",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Boitier",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "capteur",
+      "otherEntityRelationshipName": "boitier",
+      "relationshipName": "capteur",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "installation",
+      "otherEntityRelationshipName": "boitier",
+      "relationshipName": "installation",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "connecte",
+      "otherEntityRelationshipName": "boitier",
+      "relationshipName": "connecte",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

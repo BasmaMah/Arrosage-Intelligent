@@ -1,0 +1,72 @@
+{
+  "applications": "*",
+  "changelogDate": "20220428041729",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "parcelle",
+  "fields": [
+    {
+      "fieldName": "surface",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "photo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "libelle",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Parcelle",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "installation",
+      "otherEntityRelationshipName": "parcelle",
+      "relationshipName": "installation",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "plantage",
+      "otherEntityRelationshipName": "parcelle",
+      "relationshipName": "plantage",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "arrosage",
+      "otherEntityRelationshipName": "parcelle",
+      "relationshipName": "arrosage",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "notification",
+      "otherEntityRelationshipName": "parcelle",
+      "relationshipName": "notification",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "grandeur",
+      "otherEntityRelationshipName": "parcelle",
+      "relationshipName": "grandeur",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "typeSol",
+      "otherEntityRelationshipName": "parcelle",
+      "relationshipName": "typeSol",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "ferme",
+      "otherEntityRelationshipName": "parcelle",
+      "relationshipName": "ferme",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,38 @@
+{
+  "applications": "*",
+  "changelogDate": "20220428041739",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "notification",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vu",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Notification",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "parcelle",
+      "otherEntityRelationshipName": "notification",
+      "relationshipName": "parcelle",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

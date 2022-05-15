@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ferme">
+      <h2 data-cy="fermeDetailsHeading"><span> Parcelle de la ferme {{ ferme.id }} </span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <div class="row mb-3">
+          <label class="form-label" for="field_id">Id Ferme</label>
+          <input type="text" class="form-control" name="id" id="field_id"  value="{{ ferme.id }}" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_lebelle">Lebelle</label>
+          <input type="text" class="form-control" name="lebelle" id="field_lebelle" data-cy="lebelle" formControlName="lebelle" />
+        </div>
+        <dt><span>Photo</span></dt>
+        <dd>
+          <div *ngIf="ferme.photo">
+            <a (click)="openFile(ferme.photo, ferme.photoContentType)">
+              <img [src]="'data:' + ferme.photoContentType + ';base64,' + ferme.photo" style="max-width: 100%" alt="ferme image" />
+            </a>
+            {{ ferme.photoContentType }}, {{ byteSize(ferme.photo) }}
+          </div>
+        </dd>
+        <dt><span>Extra User</span></dt>
+        <dd>
+          <div *ngIf="ferme.extraUser">
+            <a [routerLink]="['/extra-user', ferme.extraUser?.id, 'view']">{{ ferme.extraUser?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ferme', ferme.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Submit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+
+entity ExtraUser {
+	phone String 
+    address String 
+    
+}
+
+entity Arrosage {
+	date Instant required
+    litresEau Float
+    
+}
+entity Ferme {
+	lebelle String 
+	photo ImageBlob 
+}
+entity Parcelle {
+	surface Float 
+    photo ImageBlob 
+    libelle String 
+    }
+    
+entity Plante {
+	libelle String 	required
+	photo ImageBlob 
+    racine String 
+}
+
+
+entity TypePlante {
+	libelle String required
+	humiditeMax Float 
+    humiditeMin Float 
+    temperature Float 
+    luminosite Float 
+} 
+
+
+entity Grandeur {
+	type String required
+	valeur Float required
+    unite String required
+    date Instant required
+    }
+    
+entity TypeSol {
+	libelle String required
+    description String  
+}
+entity Boitier {
+	ref Integer required
+    type String 
+    nbrBranchBoitier Integer 
+    nbrBranchArduino Integer 
+    code String  
+}
+entity Installation {
+	dateDebut Instant required
+    dateFin Instant 
+}
+entity Capteur {
+    ref String 
+    type String  
+    photo ImageBlob 
+}
+entity Plantage {
+	date Instant required
+    nombre Integer required
+}
+entity Connecte {
+fonctionnel Boolean 
+branche String 
+frequence Float 
+marge Float
+}
+entity Notification {
+date Instant required
+content String required
+vu Boolean required
+}
+
+relationship OneToOne {
+	 
+    ExtraUser to User
+    
+    
+}
+
+
+relationship OneToMany {
+	Parcelle to Installation
+    Boitier to Capteur 
+    TypeSol  to Parcelle
+    Boitier to Installation
+    Boitier to Connecte 
+    Capteur to Connecte
+    Parcelle to Plantage
+    Plante to Plantage
+    ExtraUser to Ferme
+     Ferme to Parcelle
+     Parcelle to Arrosage 
+     Parcelle to Notification 
+}
+
+
+relationship OneToMany {
+    TypePlante to Plante
+    Parcelle  to Grandeur 
+ 
+}

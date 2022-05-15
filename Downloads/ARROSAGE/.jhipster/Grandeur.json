@@ -1,0 +1,43 @@
+{
+  "applications": "*",
+  "changelogDate": "20220428041732",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "grandeur",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "valeur",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "unite",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Grandeur",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "parcelle",
+      "otherEntityRelationshipName": "grandeur",
+      "relationshipName": "parcelle",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

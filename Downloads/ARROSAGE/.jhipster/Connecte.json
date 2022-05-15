@@ -1,0 +1,45 @@
+{
+  "applications": "*",
+  "changelogDate": "20220428041738",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "connecte",
+  "fields": [
+    {
+      "fieldName": "fonctionnel",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "branche",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "frequence",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "marge",
+      "fieldType": "Float"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Connecte",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "boitier",
+      "otherEntityRelationshipName": "connecte",
+      "relationshipName": "boitier",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "capteur",
+      "otherEntityRelationshipName": "connecte",
+      "relationshipName": "capteur",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

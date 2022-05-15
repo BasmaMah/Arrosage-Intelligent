@@ -1,0 +1,43 @@
+{
+  "applications": "*",
+  "changelogDate": "20220428041730",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "plante",
+  "fields": [
+    {
+      "fieldName": "libelle",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "photo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "racine",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Plante",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "plantage",
+      "otherEntityRelationshipName": "plante",
+      "relationshipName": "plantage",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "typePlante",
+      "otherEntityRelationshipName": "plante",
+      "relationshipName": "typePlante",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

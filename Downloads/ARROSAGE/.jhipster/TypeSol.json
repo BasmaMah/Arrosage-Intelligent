@@ -1,0 +1,32 @@
+{
+  "applications": "*",
+  "changelogDate": "20220428041733",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "type_sol",
+  "fields": [
+    {
+      "fieldName": "libelle",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TypeSol",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "parcelle",
+      "otherEntityRelationshipName": "typeSol",
+      "relationshipName": "parcelle",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,38 @@
+{
+  "applications": "*",
+  "changelogDate": "20220428041728",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "ferme",
+  "fields": [
+    {
+      "fieldName": "lebelle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "photo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Ferme",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "parcelle",
+      "otherEntityRelationshipName": "ferme",
+      "relationshipName": "parcelle",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "extraUser",
+      "otherEntityRelationshipName": "ferme",
+      "relationshipName": "extraUser",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

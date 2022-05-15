@@ -1,0 +1,75 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-boitier-heading" data-cy="BoitierCreateUpdateHeading">Create or edit a Boitier</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_ref">Ref</label>
+          <input type="number" class="form-control" name="ref" id="field_ref" data-cy="ref" formControlName="ref" />
+          <div *ngIf="editForm.get('ref')!.invalid && (editForm.get('ref')!.dirty || editForm.get('ref')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('ref')?.errors?.required"> This field is required. </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('ref')?.errors?.number"> This field should be a number. </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_type">Type</label>
+          <input type="text" class="form-control" name="type" id="field_type" data-cy="type" formControlName="type" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nbrBranchBoitier">Nbr Branch Boitier</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nbrBranchBoitier"
+            id="field_nbrBranchBoitier"
+            data-cy="nbrBranchBoitier"
+            formControlName="nbrBranchBoitier"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nbrBranchArduino">Nbr Branch Arduino</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nbrBranchArduino"
+            id="field_nbrBranchArduino"
+            data-cy="nbrBranchArduino"
+            formControlName="nbrBranchArduino"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
